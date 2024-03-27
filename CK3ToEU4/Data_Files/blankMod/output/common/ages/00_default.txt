@@ -205,7 +205,7 @@ age_of_discovery = {
 				}
 			}
 			modifier = {
-				global_colonial_growth = 50
+				global_colonial_growth = 5
 			}
 			ai_will_do = {
 				factor = 100
@@ -264,7 +264,7 @@ age_of_reformation = {
 	can_start = {
 		OR = {
 			is_religion_enabled = protestant
-			is_year = 1590 #10 years before 1600, when Global Trade Can Spawn
+			is_year = 1540 #60 years before 1600, when Global Trade Can Spawn
 		}
 	}
 
