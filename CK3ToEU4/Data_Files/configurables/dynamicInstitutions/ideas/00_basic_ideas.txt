@@ -946,7 +946,7 @@ exploration_ideas = {
 		range = 0.5
 	}
 	land_of_opportunity = {
-		global_colonial_growth = 10
+		global_colonial_growth = 5
 	}
 	factories = {
 		trade_company_governing_cost = -0.1
@@ -1495,7 +1495,7 @@ expansion_ideas = {
 		merchants = 1
 	}
 	faster_colonists = {
-		global_colonial_growth = 20
+		global_colonial_growth = 5
 	}
 	vice_roys  = {
 		global_tariffs = 0.10
@@ -1506,8 +1506,7 @@ expansion_ideas = {
 		reduced_liberty_desire_on_other_continent = 5
 	}
 	general_colonization_law  = {
-		colonists = 1
-		colonist_placement_chance = 0.05
+		colonist_placement_chance = 0.01
 		effect = { remove_temporary_colonist = yes }
 	}
 	competetive_merchants  = {
