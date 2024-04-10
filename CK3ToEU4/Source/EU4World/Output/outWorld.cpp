@@ -389,7 +389,7 @@ void EU4::World::outputHistoryCountries(const Configuration& theConfiguration) c
 
 void EU4::World::outputDynamicIdeasFile(const std::string& outputName) const
 {
-	std::ofstream output("output/" + outputName + "/common/ideas/00_dynamic_ideas.txt"); // Not sure where to put this
+	std::ofstream output("output/" + outputName + "/common/ideas/!!_dynamic_ideas.txt"); // Not sure where to put this
 	if (!output.is_open())
 		throw std::runtime_error("Could not create dynamic ideas file!");
 	output << "### National idea groups generated via cultural traditions. \n\n";
