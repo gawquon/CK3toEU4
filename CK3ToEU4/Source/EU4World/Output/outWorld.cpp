@@ -389,14 +389,14 @@ void EU4::World::outputHistoryCountries(const Configuration& theConfiguration) c
 
 void EU4::World::outputDynamicIdeasFile(const std::string& outputName) const
 {
-	std::ofstream output("output/" + outputName + "/common/ideas/!!_dynamic_ideas.txt"); // Not sure where to put this
+	std::ofstream output("output/" + outputName + "/common/ideas/!!_dynamic_ideas.txt");
 	if (!output.is_open())
 		throw std::runtime_error("Could not create dynamic ideas file!");
 	output << "### National idea groups generated via cultural traditions. \n\n";
 
 	for (const auto& idea: dynamicNationalIdeas)
 	{
-		output << idea;
+		//output << idea;
 		output << "\n";
 	}
 	output.close();
@@ -493,7 +493,7 @@ void EU4::World::outputLocalization(const Configuration& theConfiguration, bool 
 	std::vector<std::string> spa_ideaText{"Ideas", "tradiciones", "Ambiciones"};
 	std::vector<std::string> ger_ideaText{"Ideen", "Traditionen", "Ambitionen"};
 
-	for (const auto& idea: dynamicNationalIdeas)
+	for (const auto& idea: dynamicNationalIdeas | std::views::values)
 	{
 		for (auto i = 0; i < suffix.size(); i++)
 		{

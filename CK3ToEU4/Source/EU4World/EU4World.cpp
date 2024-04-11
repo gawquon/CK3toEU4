@@ -1047,7 +1047,7 @@ void EU4::World::generateNationalIdeasFromDynamicCultures(const CK3::Cultures& c
 
 	for (auto& culture: cultures.getCultures() | std::views::values)
 	{
-		dynamicNationalIdeas.emplace_back(NationalIdeas(culture, dynamicIdeasMapper));
+		dynamicNationalIdeas.emplace(culture->getName(), NationalIdeas(culture, dynamicIdeasMapper));
 	}
 
 	Log(LogLevel::Info) << "<> Created " << dynamicNationalIdeas.size() << " National Ideas.";
