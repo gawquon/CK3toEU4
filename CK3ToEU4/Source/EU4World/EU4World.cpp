@@ -39,6 +39,7 @@ EU4::World::World(const CK3::World& sourceWorld, const Configuration& theConfigu
 	Log(LogLevel::Info) << "*** Hello EU4, let's get painting. ***";
 	localizationMapper = sourceWorld.getLocalizationMapper();
 	cultureMapper = sourceWorld.getCultureMapper();
+	genCultureSourceMap(); // Let's us give CK3 dynamic ideas to EU4 cultures
 	Log(LogLevel::Progress) << "50 %";
 
 	// Scrape Primary Tags for nationalities
@@ -243,6 +244,31 @@ void EU4::World::religiousQuestion(bool doesIslamExist)
 		}
 	}
 	Log(LogLevel::Info) << ">> Updated " << counterProvince << " provinces and " << counterCountry << " countries.";
+}
+
+void EU4::World::genCultureSourceMap()
+{
+	std::map<std::string, std::string> target_to_source;
+	const auto& rules = cultureMapper.getRules();
+	for (const auto& rule : rules)
+	{
+		if (!target_to_source.contains(rule.getEU4Culture()) and !rule.getCK3Cultures().empty())
+		{
+			target_to_source.emplace(rule.getEU4Culture(), *rule.getCK3Cultures().begin());
+		}
+	}
+
+   for (const auto& [target, source] : target_to_source)
+   {
+		if (!cultureSourceMap.contains(source))
+		{
+			cultureSourceMap.emplace(source, std::set{target});
+		}
+		else
+		{
+			cultureSourceMap.at(source).emplace(target);
+		}
+   }
 }
 
 void EU4::World::verifyAllCountyMappings(const std::map<std::string, std::shared_ptr<CK3::Title>>& ck3Titles) const

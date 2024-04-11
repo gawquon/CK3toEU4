@@ -1,7 +1,7 @@
 #include "outNationalIdeas.h"
 #include "OSCompatibilityLayer.h"
 
-std::ostream& EU4::operator<<(std::ostream& output, const NationalIdeas& idea)
+void EU4::outNationalIdeas(std::ostream& output, const NationalIdeas& idea, const std::set<std::string>& eu4Cultures)
 {
 	output << idea.getDynamicName() + "_ideas = {";
 
@@ -12,7 +12,14 @@ std::ostream& EU4::operator<<(std::ostream& output, const NationalIdeas& idea)
 	output << "\n\t}";
 
 	// Trigger
-	output << "\n\ttrigger = {\n\t\tculture = " + idea.getDynamicName() + "\n\t}\n";
+	output << "\n\ttrigger = {\n";
+	output << "\tOR = {\n";
+	for (const auto& culture: eu4Cultures)
+	{
+		output << "\t\tprimary_culture = " + culture + "\n";
+	}
+	output << "\t}\n";
+	output << "\t}\n";
 	output << "\tfree = yes\n\n";
 
 	// First 7 traditions become ideas, last one becomes ambition
@@ -33,6 +40,4 @@ std::ostream& EU4::operator<<(std::ostream& output, const NationalIdeas& idea)
 	const auto& ambitionEffect = traditionEffects[7].front(); // For multi effect ideas, the ambition is only the first effect, not all effects
 	output << "\tbonus = {\n\t\t" + ambitionEffect.modifier + " = " + ambitionEffect.value + "\n\t}\n";
 	output << "}\n\n";
-
-	return output;
 }

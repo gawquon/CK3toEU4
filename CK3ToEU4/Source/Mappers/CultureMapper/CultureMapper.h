@@ -45,6 +45,7 @@ class CultureMapper: commonItems::parser
 	[[nodiscard]] const auto& getTargetCultures() const { return targetCultures; }
 	[[nodiscard]] const auto& getSourceCultures() const { return sourceCultures; }
 	[[nodiscard]] const auto& getCK3Cultures() const { return cultures; }
+	[[nodiscard]] const auto& getRules() const { return cultureMapRules; }
 
   private:
 	void registerKeys();

@@ -86,6 +86,7 @@ class World
 	void africanQuestion();
 	void indianQuestion();
 	void religiousQuestion(bool doesIslamExist);
+	void genCultureSourceMap();
 
 	// output
 	void output(const commonItems::ConverterVersion& converterVersion,
@@ -122,6 +123,7 @@ class World
 	mappers::PrimaryTagMapper primaryTagMapper;
 	std::shared_ptr<mappers::RegionMapper> regionMapper;
 	mappers::CultureMapper cultureMapper;
+	std::map<std::string, std::set<std::string>> cultureSourceMap;
 	mappers::ProvinceMapper provinceMapper;
 	mappers::GovernmentsMapper governmentsMapper;
 	mappers::ReligionMapper religionMapper;

@@ -5,6 +5,8 @@
 #include "CommonFunctions.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "outNationalIdeas.h"
+
 #include <filesystem>
 #include <fstream>
 #include <ranges>
@@ -396,7 +398,7 @@ void EU4::World::outputDynamicIdeasFile(const std::string& outputName) const
 
 	for (const auto& idea: dynamicNationalIdeas)
 	{
-		//output << idea;
+		outNationalIdeas(output, idea.second, cultureSourceMap.contains(idea.first) ? cultureSourceMap.at(idea.first) : std::set{idea.first});
 		output << "\n";
 	}
 	output.close();

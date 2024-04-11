@@ -5,6 +5,6 @@
 
 namespace EU4
 {
-std::ostream& operator<<(std::ostream& output, const NationalIdeas& idea);
+void outNationalIdeas(std::ostream& output, const NationalIdeas& idea, const std::set<std::string>& eu4Cultures);
 } // namespace EU4
 #endif // OUT_NATIONAL_IDEAS_H
